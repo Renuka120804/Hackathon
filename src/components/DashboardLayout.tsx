@@ -20,48 +20,50 @@ import { cn } from "@/lib/utils";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
+  activeTab?: string;
+  onTabChange?: (tab: string) => void;
 }
 
 const navigationItems = [
   {
     name: "Dashboard",
     icon: BarChart3,
-    href: "#",
+    href: "dashboard",
     active: true
   },
   {
     name: "Entity Management", 
     icon: Users,
-    href: "#",
+    href: "entities",
     active: false
   },
   {
     name: "Risk Rules Engine",
     icon: Shield,
-    href: "#",
+    href: "rules",
     active: false
   },
   {
     name: "Configuration",
     icon: Settings,
-    href: "#",
+    href: "config",
     active: false
   },
   {
     name: "Alerts & Threats",
     icon: AlertTriangle,
-    href: "#",
+    href: "alerts",
     active: false
   },
   {
     name: "AI Insights",
     icon: Brain,
-    href: "#",
+    href: "insights",
     active: false
   }
 ];
 
-export function DashboardLayout({ children }: DashboardLayoutProps) {
+export function DashboardLayout({ children, activeTab, onTabChange }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -88,13 +90,14 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
             {navigationItems.map((item) => (
               <Button
                 key={item.name}
-                variant={item.active ? "default" : "ghost"}
+                variant={activeTab === item.href ? "default" : "ghost"}
                 className={cn(
                   "w-full justify-start gap-3 text-left",
-                  item.active 
+                  activeTab === item.href 
                     ? "bg-primary text-primary-foreground" 
                     : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                 )}
+                onClick={() => onTabChange?.(item.href)}
               >
                 <item.icon className="h-4 w-4" />
                 <span className="text-sm">{item.name}</span>
