@@ -61,6 +61,22 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Security Dashboard Colors
+				dashboard: {
+					bg: 'hsl(var(--dashboard-bg))',
+					sidebar: 'hsl(var(--sidebar-bg))',
+					card: 'hsl(var(--card-bg))'
+				},
+				risk: {
+					high: 'hsl(var(--risk-high))',
+					medium: 'hsl(var(--risk-medium))',
+					low: 'hsl(var(--risk-low))'
+				},
+				status: {
+					online: 'hsl(var(--status-online))',
+					warning: 'hsl(var(--status-warning))',
+					critical: 'hsl(var(--status-critical))'
 				}
 			},
 			borderRadius: {
